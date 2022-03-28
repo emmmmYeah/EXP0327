@@ -27,7 +27,7 @@ class LeftFragment : Fragment(), View.OnClickListener {
 
         val act=requireActivity() as MainActivity
 
-        when(v.id){
+        when(view?.id){
             R.id.btn_life->{
                 act.showlife()
             }
