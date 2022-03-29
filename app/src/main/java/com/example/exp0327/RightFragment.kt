@@ -1,6 +1,7 @@
 package com.example.exp0327
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 
 ///这里设置title，是为了根据传输回按钮的值
 class RightFragment(val title:String) : Fragment() {
+    val TAG="@@RightFragment"
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,4 +24,10 @@ class RightFragment(val title:String) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<TextView>(R.id.title).text = title
     }
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+
+        Log.d(TAG,"onHiddenChanged: hidden = $hidden")
+    }
+
 }

@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         manager=supportFragmentManager
-        val trans=manager.beginTransaction()
+       /* val trans=manager.beginTransaction()
 
         trans.replace(R.id.right,RightFragment("我的工作"), TAG_LIFE)
         trans.replace(R.id.right,RightFragment("我的学习"), TAG_WORK)
 
 
-        trans.commit()
+        trans.commit()*/
     }
 
     fun showlife() {
@@ -38,12 +38,11 @@ class MainActivity : AppCompatActivity() {
     fun showstudy() {
         showFragment(TAG_WORK)
     }
-   fun showFragment(TAG_LIFE: String) {
+   fun showFragment(tag: String) {
 
        val hint=findViewById<TextView>(R.id.hint)
        hint.isInvisible=false
 
-       //val tag = null
        val frag=manager.findFragmentByTag(tag)?:
           if(tag==TAG_LIFE)RightFragment("我的生活")else RightFragment("我的学习")
 
@@ -58,11 +57,10 @@ class MainActivity : AppCompatActivity() {
        if(frag.isAdded){
            trans.show(frag)
        }else{
-           trans.add(R.id.right,frag.tag)
+           trans.add(R.id.right,frag,tag)
        }
 
         trans.commit()
     }
 }
 
-}
